@@ -69,6 +69,49 @@ const STRATEGY = [
   },
 ];
 
+const STRATEGY_SWE2 = [
+  {
+    phase: "Phase 1", title: "DSA Foundations", weeks: "Weeks 1–3", color: "#f59e0b",
+    items: [
+      "LeetCode: 2 mediums daily. Focus: Arrays, Strings, HashMaps, Two Pointers, Binary Search",
+      "Complete NeetCode 75 first (not 150) — right difficulty for SWE2 level",
+      "Time yourself: 30 min per medium. Don't look at solutions for at least 20 min",
+      "Key patterns: Sliding Window, Fast/Slow Pointers, BFS/DFS on trees",
+      "Mock interview every 2 weeks on Pramp — builds real interview stamina",
+    ]
+  },
+  {
+    phase: "Phase 2", title: "System Design Basics", weeks: "Weeks 2–5", color: "#06b6d4",
+    items: [
+      "At SWE2 level, expect high-level design — not deep distributed systems",
+      "Learn: Client-Server model, REST APIs, SQL vs NoSQL basics, caching concepts",
+      "Practice designing: URL Shortener, Instagram Feed, Simple Chat App",
+      "Focus on: scalability reasoning, basic DB schema design, API contracts",
+      "Watch: Gaurav Sen & ByteByteGo on YouTube — free and beginner-friendly",
+    ]
+  },
+  {
+    phase: "Phase 3", title: "Behavioral Basics", weeks: "Weeks 4–6", color: "#10b981",
+    items: [
+      "Prepare 5–6 STAR stories: a bug you fixed, a feature you owned, a teamwork example",
+      "Focus on growth mindset — interviewers want to see you learn from mistakes",
+      "Talk about code reviews, mentorship received, and how you ask for help",
+      "Research the company's product — show genuine interest and curiosity",
+      "Practice answering: 'Tell me about yourself' in under 2 minutes",
+    ]
+  },
+  {
+    phase: "Phase 4", title: "Targeting the Right Roles", weeks: "Weeks 5–7", color: "#8b5cf6",
+    items: [
+      "Start with B/B+ tier (Amazon, Microsoft, Spotify) — great for SWE2 level",
+      "A- tier (Cloudflare, Reddit, Lyft) — stretch targets, very achievable with prep",
+      "A/A+ tier (Stripe, Airbnb, Datadog) — ambitious but possible with strong DSA",
+      "Avoid S/S+ tier for now — focus on leveling up first, revisit in 1–2 years",
+      "Apply broadly: aim for 15–20 applications to get 4–5 interview loops",
+    ]
+  },
+];
+
 const STATUS_COLORS = {
   "Not Applied": "#6b7280",
   "Applied": "#3b82f6",
@@ -164,7 +207,7 @@ export default function App() {
           </div>
           <p style={{ margin: "0 0 20px 48px", color: "#64748b", fontSize: 13 }}>Your personal hub for cracking top tech companies</p>
           <div style={{ display: "flex", gap: 4 }}>
-            {[["strategy", "📋 Strategy"], ["tracker", "📊 App Tracker"], ["europe", "🌍 Europe Roles"], ["bot", "🤖 Job Scout Bot"]].map(([id, label]) => (
+            {[["strategy", "📋 Senior Strategy"], ["swe2", "🌱 SWE2 Strategy"], ["tracker", "📊 App Tracker"], ["europe", "🌍 Europe Roles"], ["bot", "🤖 Job Scout Bot"]].map(([id, label]) => (
               <button key={id} onClick={() => setTab(id)} style={{
                 background: tab === id ? "rgba(255,255,255,0.1)" : "transparent",
                 color: tab === id ? "#fff" : "#64748b",
@@ -210,6 +253,81 @@ export default function App() {
                   <div key={i} style={{ background: "#0a0a0f", borderRadius: 10, padding: 16, borderTop: `2px solid ${t.color}` }}>
                     <div style={{ fontWeight: 700, color: t.color, marginBottom: 6, fontSize: 13 }}>{t.label}</div>
                     <div style={{ color: "#64748b", fontSize: 12, lineHeight: 1.6 }}>{t.desc}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        )}
+
+
+        {/* SWE2 STRATEGY TAB */}
+        {tab === "swe2" && (
+          <div>
+            <div style={{ background: "linear-gradient(135deg, #f59e0b11, #06b6d411)", border: "1px solid #f59e0b33", borderRadius: 14, padding: "16px 20px", marginBottom: 20, display: "flex", alignItems: "center", gap: 12 }}>
+              <span style={{ fontSize: 28 }}>🌱</span>
+              <div>
+                <div style={{ fontWeight: 700, color: "#f8fafc", fontSize: 15 }}>Software Engineer 2 — 2–3 Years Experience</div>
+                <div style={{ color: "#64748b", fontSize: 13, marginTop: 3 }}>A focused 7-week plan to land SWE2 roles at top tech companies. Less depth than senior, more emphasis on clean code, fundamentals, and growth potential.</div>
+              </div>
+            </div>
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16, marginBottom: 20 }}>
+              {STRATEGY_SWE2.map((s, i) => (
+                <div key={i} style={{ background: "#111827", border: `1px solid ${s.color}33`, borderRadius: 14, padding: 22, borderLeft: `3px solid ${s.color}` }}>
+                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 14 }}>
+                    <div>
+                      <span style={{ fontSize: 11, fontWeight: 700, color: s.color, textTransform: "uppercase", letterSpacing: 1 }}>{s.phase}</span>
+                      <h3 style={{ margin: "4px 0 0", fontSize: 17, fontWeight: 700, color: "#f8fafc" }}>{s.title}</h3>
+                    </div>
+                    <span style={{ background: `${s.color}22`, color: s.color, fontSize: 11, padding: "4px 10px", borderRadius: 20, fontWeight: 600 }}>{s.weeks}</span>
+                  </div>
+                  <ul style={{ margin: 0, padding: "0 0 0 16px" }}>
+                    {s.items.map((item, j) => (
+                      <li key={j} style={{ color: "#94a3b8", fontSize: 13, lineHeight: 1.7, marginBottom: 4 }}>{item}</li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+            <div style={{ background: "#111827", border: "1px solid #1e2a4a", borderRadius: 14, padding: 22, marginBottom: 16 }}>
+              <h3 style={{ margin: "0 0 16px", fontSize: 15, fontWeight: 700, color: "#f8fafc" }}>🎯 SWE2 vs Senior — Key Interview Differences</h3>
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 12 }}>
+                {[
+                  { label: "Coding", swe2: "Clean solutions to mediums. Explain clearly as you code.", senior: "Mediums + hards. Optimal time/space complexity expected.", color: "#f59e0b" },
+                  { label: "System Design", swe2: "High-level design, basic scalability. Show you understand tradeoffs.", senior: "Deep dive: sharding, replication, consistency, latency.", color: "#06b6d4" },
+                  { label: "Behavioral", swe2: "Show teamwork, curiosity, learning from feedback.", senior: "Show ownership, cross-team impact, mentoring others.", color: "#10b981" },
+                ].map((t, i) => (
+                  <div key={i} style={{ background: "#0a0a0f", borderRadius: 10, padding: 16, borderTop: `2px solid ${t.color}` }}>
+                    <div style={{ fontWeight: 700, color: t.color, marginBottom: 10, fontSize: 13 }}>{t.label}</div>
+                    <div style={{ marginBottom: 8 }}>
+                      <div style={{ fontSize: 10, color: "#64748b", textTransform: "uppercase", letterSpacing: 0.8, marginBottom: 4 }}>SWE2</div>
+                      <div style={{ color: "#94a3b8", fontSize: 12, lineHeight: 1.6 }}>{t.swe2}</div>
+                    </div>
+                    <div>
+                      <div style={{ fontSize: 10, color: "#64748b", textTransform: "uppercase", letterSpacing: 0.8, marginBottom: 4 }}>Senior</div>
+                      <div style={{ color: "#94a3b8", fontSize: 12, lineHeight: 1.6 }}>{t.senior}</div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div style={{ background: "#111827", border: "1px solid #1e2a4a", borderRadius: 14, padding: 22 }}>
+              <h3 style={{ margin: "0 0 16px", fontSize: 15, fontWeight: 700, color: "#f8fafc" }}>📚 SWE2 Resource Checklist</h3>
+              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10 }}>
+                {[
+                  { icon: "💻", title: "NeetCode 75", desc: "Core DSA patterns — free at neetcode.io" },
+                  { icon: "📖", title: "Cracking the Coding Interview", desc: "Classic prep book, chapters 1–8" },
+                  { icon: "🎥", title: "ByteByteGo (YouTube)", desc: "Visual system design for beginners" },
+                  { icon: "🎤", title: "Pramp", desc: "Free peer mock interviews — do 1 every 2 weeks" },
+                  { icon: "📝", title: "Glassdoor", desc: "Look up exact interview questions per company" },
+                  { icon: "🧠", title: "interviewing.io", desc: "Anonymous mock interviews with real engineers" },
+                ].map((r, i) => (
+                  <div key={i} style={{ background: "#0a0a0f", borderRadius: 10, padding: "12px 16px", display: "flex", gap: 12, alignItems: "flex-start" }}>
+                    <span style={{ fontSize: 20 }}>{r.icon}</span>
+                    <div>
+                      <div style={{ fontWeight: 700, color: "#f8fafc", fontSize: 13 }}>{r.title}</div>
+                      <div style={{ color: "#64748b", fontSize: 12, marginTop: 2 }}>{r.desc}</div>
+                    </div>
                   </div>
                 ))}
               </div>
