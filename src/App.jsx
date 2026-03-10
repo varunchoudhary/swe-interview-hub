@@ -30,43 +30,60 @@ const STRATEGY = [
   {
     phase: "Phase 1", title: "DSA Mastery", weeks: "Weeks 1–4", color: "#e11d48",
     items: [
-      "LeetCode: 3 mediums + 1 hard daily. Focus: Arrays, Trees, Graphs, DP",
-      "NeetCode 150 — complete all patterns systematically",
-      "Time yourself: 25 min mediums, 40 min hards",
-      "For S+/S companies (Jane Street, Citadel): add competitive programming (Codeforces Div. 2)",
-      "Mock interview weekly on Pramp or interviewing.io",
+      "LeetCode: 3 mediums + 1 hard daily — Arrays, Trees, Graphs, Heaps, DP, Backtracking",
+      "NeetCode 150 — complete all patterns; don't skip hard graph/DP problems",
+      "Time strictly: 25 min mediums, 40 min hards. If stuck, analyze the optimal solution deeply",
+      "For S+/S quant firms (Jane Street, Citadel): supplement with Codeforces Div. 2 problems",
+      "Weekly mock on interviewing.io — anonymous, with real engineers at your target companies",
+      "Track weak patterns: revisit 2–3 problem types weekly until fully comfortable",
     ]
   },
   {
-    phase: "Phase 2", title: "System Design", weeks: "Weeks 3–6", color: "#7c3aed",
+    phase: "Phase 2", title: "System Design", weeks: "Weeks 2–6", color: "#7c3aed",
     items: [
-      "Read: 'Designing Data-Intensive Applications' (Kleppmann) — chapters 1–6",
-      "Practice: Design Twitter Feed, Uber, YouTube, Distributed Cache, Rate Limiter",
-      "For A++ tier: focus on scale (millions of users, global infra)",
-      "For S tier quant firms: focus on low-latency, data pipelines, real-time systems",
-      "Record yourself explaining designs — review clarity & depth",
+      "Read 'Designing Data-Intensive Applications' (Kleppmann) — all chapters, take notes",
+      "Must-know designs: Payment System, Distributed Rate Limiter, Search Autocomplete, Notification Service, Ad Click Aggregator",
+      "Go deep on: consistent hashing, leader election, CAP theorem, event-driven vs request-driven",
+      "For backend roles: master DB indexing, query optimization, connection pooling, sharding strategies",
+      "For S/A++ tier: be ready for 'design a system like Kafka' or 'design a real-time leaderboard'",
+      "Record yourself on Loom explaining a design — watch for clarity, structure, and depth gaps",
     ]
   },
   {
     phase: "Phase 3", title: "Behavioral & Leadership", weeks: "Weeks 5–7", color: "#0891b2",
     items: [
-      "Prepare 10 STAR stories: conflict, failure, ownership, cross-team, ambiguity",
-      "For S+/A++ companies: emphasize impact at scale and independent ownership",
-      "Research each company's engineering blog + recent tech decisions",
-      "Tailor stories to company values (Anthropic=safety, Stripe=reliability, Meta=scale)",
-      "Practice with a senior peer or coach — get brutal feedback",
+      "Prepare 10 STAR stories: technical conflict, production incident, cross-team influence, ambiguous project, mentoring",
+      "Quantify every story: 'reduced p99 latency by 40%', 'unblocked 3 teams', 'saved $200k/month in infra costs'",
+      "For A++/S tier: stories must show you drove decisions, not just executed them",
+      "Research engineering blogs: Stripe, Cloudflare, Databricks, Notion all publish deep tech posts — reference them",
+      "Tailor values per company: Anthropic=safety & research, Stripe=correctness, Meta=scale, Airbnb=craft",
+      "Do 2 full mock interviews with a senior peer — get written feedback on communication and depth",
     ]
   },
   {
-    phase: "Phase 4", title: "Company-Specific Prep", weeks: "Week 6–8", color: "#059669",
+    phase: "Phase 4", title: "Company-Specific Prep", weeks: "Weeks 6–8", color: "#059669",
     items: [
-      "Top-tier (S+): expect 6–8 rounds, research papers, ML system design",
-      "A++ tier: product sense + eng design combo rounds",
-      "Quant firms: math + probability + brain teasers on top of coding",
-      "Use Glassdoor + Blind for recent interview questions per company",
-      "Apply to B tier first for practice, then A/S tier",
+      "S+ tier (Anthropic, OpenAI, xAI): expect ML system design, research paper discussions, 6–8 rounds",
+      "Quant firms (Jane Street, Citadel, HRT): add probability, brain teasers, market microstructure basics",
+      "A++ tier (Databricks, Netflix, Anduril): strong infra/backend system design + leadership signals",
+      "A+ tier (Stripe, Airbnb, Figma): product + technical hybrid — understand their core product deeply",
+      "Use Blind + Glassdoor for recent interview reports per company — patterns repeat",
+      "Apply B tier in Week 2 for reps, A tier in Week 4, S tier only after 2 full mock loops",
     ]
   },
+];
+
+const SENIOR_RESOURCES = [
+  { icon: "📘", title: "Designing Data-Intensive Apps", desc: "Martin Kleppmann — the bible for distributed systems. Read cover to cover.", tag: "System Design" },
+  { icon: "💻", title: "NeetCode 150", desc: "neetcode.io — structured DSA patterns with video explanations. Senior must-complete.", tag: "DSA" },
+  { icon: "🧠", title: "interviewing.io", desc: "Anonymous mock interviews with engineers at FAANG/top startups. Best signal for Senior+.", tag: "Mock Interviews" },
+  { icon: "🎥", title: "ByteByteGo (YouTube + Book)", desc: "Alex Xu's system design channel + 'System Design Interview Vol 1 & 2' books.", tag: "System Design" },
+  { icon: "📝", title: "Blind + Glassdoor", desc: "Check recent interview reports per company. Patterns repeat across interview cycles.", tag: "Company Research" },
+  { icon: "🔁", title: "Pramp", desc: "Free peer mock interviews. Use for behavioral rounds and early DSA practice.", tag: "Mock Interviews" },
+  { icon: "📖", title: "High Scalability Blog", desc: "highscalability.com — real architecture breakdowns of Stripe, Netflix, Discord and more.", tag: "System Design" },
+  { icon: "⚡", title: "Codeforces Div. 2", desc: "Required for quant firms (Jane Street, Citadel, HRT). Practice A–C problems weekly.", tag: "DSA (Quant)" },
+  { icon: "🎙️", title: "Lenny's Podcast / Pragmatic Engineer", desc: "Stay sharp on how top engineers think about systems, ownership, and impact.", tag: "Behavioral" },
+  { icon: "🏢", title: "Company Engineering Blogs", desc: "Stripe, Cloudflare, Databricks, Notion, Figma — read 2–3 posts per target company.", tag: "Company Research" },
 ];
 
 const STRATEGY_SWE2 = [
@@ -224,7 +241,14 @@ export default function App() {
         {/* STRATEGY TAB */}
         {tab === "strategy" && (
           <div>
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16, marginBottom: 24 }}>
+            <div style={{ background: "linear-gradient(135deg, #e11d4811, #7c3aed11)", border: "1px solid #e11d4833", borderRadius: 14, padding: "16px 20px", marginBottom: 20, display: "flex", alignItems: "center", gap: 12 }}>
+              <span style={{ fontSize: 28 }}>🏆</span>
+              <div>
+                <div style={{ fontWeight: 700, color: "#f8fafc", fontSize: 15 }}>Senior Software Engineer — 5–7 Years Experience</div>
+                <div style={{ color: "#64748b", fontSize: 13, marginTop: 3 }}>An 8-week plan designed for backend engineers targeting Senior roles. Emphasis on depth, ownership signals, and cracking top-tier companies.</div>
+              </div>
+            </div>
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16, marginBottom: 20 }}>
               {STRATEGY.map((s, i) => (
                 <div key={i} style={{ background: "#111827", border: `1px solid ${s.color}33`, borderRadius: 14, padding: 22, borderLeft: `3px solid ${s.color}` }}>
                   <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 14 }}>
@@ -242,17 +266,34 @@ export default function App() {
                 </div>
               ))}
             </div>
-            <div style={{ background: "#111827", border: "1px solid #1e2a4a", borderRadius: 14, padding: 22 }}>
+            <div style={{ background: "#111827", border: "1px solid #1e2a4a", borderRadius: 14, padding: 22, marginBottom: 16 }}>
               <h3 style={{ margin: "0 0 16px", fontSize: 15, fontWeight: 700, color: "#f8fafc" }}>🎯 Tier-Based Application Strategy</h3>
               <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 12 }}>
                 {[
-                  { label: "Safety Net (B/B+)", desc: "Apply first. Use for practice rounds. Build confidence and comp data.", color: "#6b7280" },
-                  { label: "Target (A/A+/A++)", desc: "Your main focus. 3–4 active applications at a time. Deep company research.", color: "#3b82f6" },
-                  { label: "Dream (S/S+)", desc: "Apply after 2+ weeks of prep. Requires extra effort: ML basics, quant skills.", color: "#e11d48" },
+                  { label: "Safety Net (B/B+)", desc: "Apply in Week 2. Use for reps — build confidence, calibrate your storytelling, collect comp data.", color: "#6b7280" },
+                  { label: "Target (A/A+/A++)", desc: "Main focus from Week 4. 3–4 active loops at a time. Deep company + product research required.", color: "#3b82f6" },
+                  { label: "Dream (S/S+)", desc: "Apply Week 6+ only. Needs extra prep: ML basics for AI labs, quant skills for trading firms.", color: "#e11d48" },
                 ].map((t, i) => (
                   <div key={i} style={{ background: "#0a0a0f", borderRadius: 10, padding: 16, borderTop: `2px solid ${t.color}` }}>
                     <div style={{ fontWeight: 700, color: t.color, marginBottom: 6, fontSize: 13 }}>{t.label}</div>
                     <div style={{ color: "#64748b", fontSize: 12, lineHeight: 1.6 }}>{t.desc}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div style={{ background: "#111827", border: "1px solid #1e2a4a", borderRadius: 14, padding: 22 }}>
+              <h3 style={{ margin: "0 0 16px", fontSize: 15, fontWeight: 700, color: "#f8fafc" }}>📚 Senior Engineer Resource Checklist</h3>
+              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10 }}>
+                {SENIOR_RESOURCES.map((r, i) => (
+                  <div key={i} style={{ background: "#0a0a0f", borderRadius: 10, padding: "12px 16px", display: "flex", gap: 12, alignItems: "flex-start" }}>
+                    <span style={{ fontSize: 20 }}>{r.icon}</span>
+                    <div style={{ flex: 1 }}>
+                      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                        <div style={{ fontWeight: 700, color: "#f8fafc", fontSize: 13 }}>{r.title}</div>
+                        <span style={{ fontSize: 10, background: "#1e2a4a", color: "#64748b", padding: "2px 7px", borderRadius: 6, whiteSpace: "nowrap", marginLeft: 8 }}>{r.tag}</span>
+                      </div>
+                      <div style={{ color: "#64748b", fontSize: 12, marginTop: 3, lineHeight: 1.5 }}>{r.desc}</div>
+                    </div>
                   </div>
                 ))}
               </div>
